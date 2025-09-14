@@ -1,114 +1,115 @@
-# AirBnB Clone - The Console
-
-## Description
-This project is the first step in building a full web application: the AirBnB clone.  
-In this step, we create a **command interpreter** (the console) that allows us to manage AirBnB objects.
-
-The console works like a shell but is limited to specific use cases. It allows you to:
-- Create new objects (e.g., a new User or a new Place)
-- Retrieve an object from storage
-- Perform operations on objects (count, list all, etc.)
-- Update attributes of an object
-- Destroy an object
-
-This first version uses a **FileStorage engine**:
-- Objects are stored in memory (Python dictionary).
-- Objects are serialized into a JSON file (`file.json`).
-- Objects can be deserialized back from the JSON file.
-
-Future steps of the project will add:
-- Web static (HTML/CSS)
-- Database storage
-- APIs
-- Web front-end integration
+# alu-AirBnB
+An AirBnB clone.
 
 ---
 
-## How to Start the Console
+## Description 🏠
+HBnB is a complete web application, integrating **database storage**, a **back-end API**, and **front-end interfacing** in a clone of AirBnB.  
+
+This repository is the **first step** towards building the full application.  
+It focuses on:
+- A custom **command-line interface (CLI)** for data management  
+- Base classes for data storage and handling  
+
+The console manages the creation, retrieval, updating, and destruction of objects (e.g., Users, Places).
+
+---
+
+## How to Start It ⚙️
 1. Clone the repository:
    ```bash
    git clone https://github.com/<frankmusiime>/alu-AirBnB_clone.git
    cd alu-AirBnB_clone
-Make sure console.py is executable:
-
-bash
-Copy code
-chmod +x console.py
-Start the console in interactive mode:
+Run the console:
 
 bash
 Copy code
 ./console.py
-Start the console in non-interactive mode:
+Once started, the prompt will appear:
 
 bash
 Copy code
-echo "help" | ./console.py
-How to Use the Console
-The console supports various commands. The main ones are:
+(hbnb)
+How to Use It 💻
+The console supports interactive and non-interactive modes.
 
-help → Displays available commands
-
-quit → Exits the console
-
-EOF → Exits the console (Ctrl+D)
-
-Object-specific commands (examples shown for User):
-
-create <class> → Creates a new object and prints its id
-
-show <class> <id> → Displays the string representation of an object
-
-destroy <class> <id> → Deletes an object
-
-all [class] → Shows all objects, or all objects of a class
-
-update <class> <id> <attribute> <value> → Updates an attribute
-
-Examples
 Interactive Mode
 bash
 Copy code
 $ ./console.py
 (hbnb) help
-
 Documented commands (type help <topic>):
 ========================================
 EOF  help  quit
-
-(hbnb) create User
-d9f1c0f2-23d4-4f2e-b2fd-0a5c2b83e1e2
-(hbnb) show User d9f1c0f2-23d4-4f2e-b2fd-0a5c2b83e1e2
-[User] (d9f1c0f2-23d4-4f2e-b2fd-0a5c2b83e1e2) {'id': 'd9f1c0f2-...', 'created_at': '2025-09-14T12:00:00', 'updated_at': '2025-09-14T12:00:00'}
 (hbnb) quit
 $
 Non-Interactive Mode
 bash
 Copy code
-$ echo "create User" | ./console.py
-d9f1c0f2-23d4-4f2e-b2fd-0a5c2b83e1e2
-Requirements
-Python 3.8.5 (Ubuntu 20.04 LTS)
+$ echo "help" | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+$
+Commands 📝
+create <class> → Creates a new instance
 
-pycodestyle (PEP8 style guide)
+show <class> <id> → Shows an object
 
-Project Structure
-markdown
+destroy <class> <id> → Deletes an object
+
+all [<class>] → Shows all objects or all objects of a class
+
+update <class> <id> <attr_name> "<value>" → Updates object attributes
+
+quit or EOF → Exits the console
+
+Alternative Syntax 🔀
+Commands can also be used with dot notation:
+
+php-template
 Copy code
-.
-├── AUTHORS
-├── README.md
-├── console.py
-├── models/
-│   ├── __init__.py
-│   ├── base_model.py
-│   └── engine/
-│       └── file_storage.py
-└── tests/
-    └── test_models/
-        ├── test_base_model.py
-        └── ...
-Authors
-Frank Musiime
+<class name>.<command>([<id>[name_arg value_arg]|[kwargs]])
+Examples:
 
-Saad Byiringiro
+User.all() → List all User objects
+
+User.count() → Count User instances
+
+User.show("1234-5678-9012") → Show a specific User
+
+User.destroy("1234-5678-9012") → Delete a specific User
+
+User.update("1234-5678-9012", {"name": "Alice", "age": 30}) → Update multiple attributes
+
+Examples 🚀
+Create an object
+bash
+Copy code
+(hbnb) create BaseModel
+3aa5babc-efb6-4041-bfe9-3cc9727588f8
+Show an object
+bash
+Copy code
+(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+[BaseModel] (3aa5babc-efb6-4041-bfe9-3cc9727588f8) {'id': '3aa5babc...', 'created_at': ..., 'updated_at': ...}
+Destroy an object
+bash
+Copy code
+(hbnb) destroy BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+** no instance found **
+Update an object
+bash
+Copy code
+(hbnb) update BaseModel b405fc64-9724-498f-b405-e4071c3d857f first_name "person"
+(hbnb) show BaseModel b405fc64-9724-498f-b405-e4071c3d857f
+[BaseModel] (...) {'first-name': 'person'}
+Project Organization 📂
+console.py → Entry point for the command interpreter
+
+models/ → Contains model classes (BaseModel, User, etc.)
+
+tests/ → Unit tests
