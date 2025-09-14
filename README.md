@@ -18,7 +18,7 @@ The console manages the creation, retrieval, updating, and destruction of object
 ## How to Start It ⚙️
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<frankmusiime>/alu-AirBnB_clone.git
+   git clone https://github.com/<your-username>/alu-AirBnB_clone.git
    cd alu-AirBnB_clone
 Run the console:
 
@@ -38,10 +38,8 @@ bash
 Copy code
 $ ./console.py
 (hbnb) help
-
-## Documented commands (type help <topic>):
+Documented commands (type help <topic>):
 ========================================
-
 EOF  help  quit
 (hbnb) quit
 $
@@ -50,10 +48,8 @@ bash
 Copy code
 $ echo "help" | ./console.py
 (hbnb)
-
 Documented commands (type help <topic>):
 ========================================
-
 EOF  help  quit
 (hbnb)
 $
@@ -110,7 +106,7 @@ bash
 Copy code
 (hbnb) update BaseModel b405fc64-9724-498f-b405-e4071c3d857f first_name "person"
 (hbnb) show BaseModel b405fc64-9724-498f-b405-e4071c3d857f
-[BaseModel] (...) {'first-name': 'person'}
+[BaseModel] (...) {'first_name': 'person'}
 Project Organization 📂
 console.py → Entry point for the command interpreter
 
