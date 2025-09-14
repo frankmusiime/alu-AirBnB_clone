@@ -213,6 +213,6 @@ class HBNBCommand(cmd.Cmd):
             obj.__dict__.update({attribute_name: attribute_value})
 
         storage.save()
-
+        
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
